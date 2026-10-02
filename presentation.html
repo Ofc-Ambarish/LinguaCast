@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  LinguaCast — Full Project Presentation (20 Sections)
+  © 2026 Ambarish. All rights reserved.
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LinguaCast — Project Presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #06080f;
+  --bg-2: #0d1220;
+  --accent-1: #6366f1;
+  --accent-2: #8b5cf6;
+  --accent-3: #06b6d4;
+  --accent-4: #22d3ee;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --text: #ffffff;
+  --text-2: #94a3b8;
+  --text-3: #64748b;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   DECK
+   ============================================================ */
+.deck {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.orbs {
+  position: absolute; inset: 0;
+  overflow: hidden; pointer-events: none; z-index: 0;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+  animation: float 22s infinite ease-in-out;
+}
+.orb-1 { width: 500px; height: 500px; background: var(--accent-1); top: -180px; left: -180px; }
+.orb-2 { width: 450px; height: 450px; background: var(--accent-2); bottom: -150px; right: -150px; animation-delay: -7s; }
+.orb-3 { width: 400px; height: 400px; background: var(--accent-3); top: 45%; left: 55%; animation-delay: -14s; }
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(40px, -40px) scale(1.15); }
+  66%      { transform: translate(-30px, 30px) scale(0.9); }
+}
+
+.grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  z-index: 0;
+}
+
+/* ============================================================
+   SLIDE
+   ============================================================ */
+.slide {
+  position: absolute; inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 60px;
+  z-index: 1;
+  overflow-y: auto;
+  animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.slide.active { display: flex; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.slide-inner { width: 100%; max-width: 1200px; }
+
+.slide-header { margin-bottom: 26px; }
+
+.slide-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-3);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.slide-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+}
+
+.slide-title span {
+  background: linear-gradient(135deg, var(--accent-3), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================================
+   SLIDE 1 — TITLE
+   ============================================================ */
+.title-slide { text-align: center; }
+
+.title-mark {
+  font-size: 4.5rem;
+  width: 110px; height: 110px;
+  margin: 0 auto 24px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+  box-shadow: 0 20px 70px rgba(99, 102, 241, 0.5);
+  animation: titlePulse 3s infinite ease-in-out;
+}
+
+@keyframes titlePulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+.title-name {
+  font-size: 3.6rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 12px;
+}
+
+.title-name span {
+  background: linear-gradient(135deg, var(--accent-3), var(--accent-4));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title-tagline {
+  font-size: 1.05rem;
+  color: var(--text-2);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 34px;
+}
+
+.title-meta {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.title-meta .label {
+  font-size: 0.66rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 6px;
+}
+
+.title-meta .value {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ============================================================
+   CARD GRID
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.3s, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+.card:hover::before { opacity: 1; }
+
+.card-icon {
+  font-size: 1.7rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+/* ============================================================
+   FEATURE LIST
+   ============================================================ */
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: all 0.25s;
+}
+
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(6, 182, 212, 0.3);
+  transform: translateX(4px);
+}
+
+.feature-item .emoji { font-size: 1.3rem; flex-shrink: 0; }
+
+.feature-item h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.feature-item p {
+  font-size: 0.78rem;
+  color: var(--text-2);
+  line-height: 1.45;
+}
+
+/* ============================================================
+   TECH GRID
+   ============================================================ */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.tech-card {
+  padding: 18px 14px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.05));
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 14px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.tech-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-3);
+}
+
+.tech-card .icon { font-size: 1.9rem; margin-bottom: 10px; }
+.tech-card h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 4px; }
+.tech-card p { font-size: 0.72rem; color: var(--text-2); }
+
+/* ============================================================
+   ARCH FLOW
+   ============================================================ */
+.arch-flow {
+  display: flex; flex-direction: column; gap: 10px;
+  max-width: 900px; margin: 0 auto;
+}
+
+.arch-row {
+  display: flex; justify-content: center; align-items: center;
+  gap: 12px; flex-wrap: wrap;
+}
+
+.arch-box {
+  padding: 12px 18px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.08));
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 130px;
+  transition: all 0.25s;
+}
+.arch-box:hover { border-color: var(--accent-3); transform: scale(1.03); }
+
+.arch-box.accent {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(34, 211, 238, 0.1));
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.arch-arrow {
+  font-size: 1.2rem;
+  color: var(--accent-3);
+  font-weight: 700;
+}
+
+/* ============================================================
+   LANGUAGE BADGES
+   ============================================================ */
+.lang-section { margin-top: 14px; }
+.lang-section h3 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-3);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.lang-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.lang-badge {
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.lang-badge:hover {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  padding: 22px 18px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.06));
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 16px;
+  text-align: center;
+}
+.stat-card:hover { transform: translateY(-6px); transition: transform 0.3s; }
+
+.stat-number {
+  font-size: 2.3rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent-3), var(--accent-4));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+table th {
+  text-align: left;
+  padding: 12px 14px;
+  background: rgba(99, 102, 241, 0.15);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-3);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+table th:first-child { border-radius: 10px 0 0 0; }
+table th:last-child  { border-radius: 0 10px 0 0; }
+
+table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-2);
+}
+
+table tr:hover td { background: rgba(255, 255, 255, 0.02); color: var(--text); }
+
+.status-pass { color: var(--success); font-weight: 600; }
+.status-warn { color: var(--warning); font-weight: 600; }
+
+/* ============================================================
+   CODE BLOCK (for pseudocode)
+   ============================================================ */
+.code-block {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: #cbd5e1;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.code-block .kw { color: #c084fc; font-weight: 600; }
+.code-block .fn { color: #22d3ee; }
+.code-block .str { color: #86efac; }
+.code-block .cmt { color: #64748b; font-style: italic; }
+.code-block .num { color: #fbbf24; }
+
+/* ============================================================
+   USE CASE / FLOW DIAGRAM (ASCII)
+   ============================================================ */
+.diagram {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: #cbd5e1;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* ============================================================
+   TWO-COLUMN LAYOUT
+   ============================================================ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.col h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--accent-3);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.col ul { list-style: none; }
+.col li {
+  padding: 8px 0 8px 22px;
+  font-size: 0.85rem;
+  color: var(--text-2);
+  position: relative;
+  line-height: 1.5;
+}
+.col li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent-3);
+  font-weight: 700;
+}
+
+/* ============================================================
+   THANK YOU
+   ============================================================ */
+.thanks-slide { text-align: center; }
+
+.thanks-mark {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  animation: titlePulse 3s infinite;
+}
+
+.thanks-title {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 14px;
+  background: linear-gradient(135deg, var(--accent-3), var(--accent-2), var(--accent-1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.thanks-sub {
+  font-size: 1.05rem;
+  color: var(--text-2);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 34px;
+}
+
+/* ============================================================
+   CONTROLS
+   ============================================================ */
+.controls {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  z-index: 100;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.ctrl-btn {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.ctrl-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  transform: scale(1.08);
+}
+.ctrl-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.ctrl-btn.print {
+  width: auto;
+  padding: 0 18px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--accent-3), var(--success));
+  color: white;
+}
+
+.slide-counter {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-2);
+  min-width: 58px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
+  z-index: 200;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 12px var(--accent-3);
+}
+
+.hint {
+  position: fixed;
+  top: 18px; right: 18px;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  font-size: 0.72rem;
+  color: var(--text-2);
+  z-index: 100;
+}
+.hint kbd {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  margin: 0 2px;
+  border: 1px solid var(--border);
+}
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
+@media print {
+  @page { size: A4 landscape; margin: 10mm; }
+
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+    color: #0f172a !important;
+  }
+
+  .orbs, .grid-bg, .controls, .hint, .progress-bar { display: none !important; }
+
+  .deck { display: block !important; width: auto !important; height: auto !important; overflow: visible !important; }
+
+  .slide {
+    display: flex !important;
+    position: relative !important;
+    inset: auto !important;
+    width: 100%;
+    height: 195mm;
+    page-break-after: always;
+    page-break-inside: avoid;
+    padding: 25px 40px !important;
+    background: white !important;
+    color: #0f172a !important;
+    animation: none !important;
+    overflow: visible !important;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .slide:last-child { page-break-after: auto; }
+
+  .slide-title, .title-name, .thanks-title {
+    color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
+    background: none !important;
+  }
+
+  .slide-title span, .title-name span, .thanks-title {
+    -webkit-text-fill-color: #6366f1 !important;
+    background: none !important;
+    color: #6366f1 !important;
+  }
+
+  .slide-kicker, .stat-number, .lang-section h3, .col h3 {
+    color: #06b6d4 !important;
+    -webkit-text-fill-color: #06b6d4 !important;
+    background: none !important;
+  }
+
+  .card, .feature-item, .tech-card, .arch-box, .stat-card, .lang-badge, .code-block, .diagram {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .card h3, .feature-item h4, .tech-card h4, .arch-box { color: #0f172a !important; }
+  .card p, .feature-item p, .tech-card p, .col li, p, td { color: #475569 !important; }
+
+  table th { background: #e0e7ff !important; color: #4338ca !important; }
+  table td { color: #1e293b !important; border-color: #e2e8f0 !important; }
+
+  .status-pass { color: #059669 !important; }
+  .status-warn { color: #d97706 !important; }
+
+  .title-mark, .thanks-mark {
+    background: #6366f1 !important;
+    box-shadow: none !important;
+    color: white !important;
+  }
+
+  .title-meta { border-color: #cbd5e1 !important; }
+  .title-meta .label { color: #94a3b8 !important; }
+  .title-meta .value { color: #0f172a !important; }
+
+  .code-block, .diagram { color: #1e293b !important; }
+  .code-block .kw { color: #7c3aed !important; }
+  .code-block .fn { color: #0891b2 !important; }
+  .code-block .str { color: #059669 !important; }
+  .code-block .cmt { color: #94a3b8 !important; }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .slide { padding: 30px 24px; }
+  .slide-title { font-size: 1.6rem; }
+  .title-name { font-size: 2.4rem; }
+  .title-mark { width: 90px; height: 90px; font-size: 3.2rem; }
+  .thanks-title { font-size: 2.6rem; }
+  .stat-number { font-size: 1.8rem; }
+  .two-col { grid-template-columns: 1fr; }
+  .hint { display: none; }
+}
+
+@media (max-width: 600px) {
+  .slide { padding: 22px 16px; }
+  .slide-title { font-size: 1.3rem; }
+  .title-name { font-size: 1.9rem; }
+  .title-mark { width: 70px; height: 70px; font-size: 2.5rem; }
+  .card-grid, .feature-list { grid-template-columns: 1fr; }
+  .controls { padding: 8px 12px; gap: 8px; }
+  .ctrl-btn { width: 34px; height: 34px; font-size: 0.9rem; }
+  .code-block, .diagram { font-size: 0.65rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="grid-bg"></div>
+</div>
+
+<div class="hint">
+  <kbd>←</kbd><kbd>→</kbd> navigate &nbsp;•&nbsp; <kbd>F</kbd> fullscreen &nbsp;•&nbsp; <kbd>Ctrl</kbd>+<kbd>P</kbd> print
+</div>
+
+<div class="deck">
+
+  <!-- ============================================================
+       SLIDE 1 — TITLE / ABSTRACT
+       ============================================================ -->
+  <section class="slide active">
+    <div class="slide-inner title-slide">
+      <div class="title-mark">📢</div>
+      <h1 class="title-name">Lingua<span>Cast</span></h1>
+      <p class="title-tagline">Broadcast Your Voice Worldwide</p>
+
+      <p style="font-size:0.95rem;color:var(--text-2);max-width:800px;margin:0 auto 34px;line-height:1.7;">
+        A browser-based real-time voice translation application built with pure
+        HTML, CSS, and JavaScript. Speak in one language — instantly hear it in
+        another. No backend, no API keys, no cost.
+      </p>
+
+      <div class="title-meta">
+        <div>
+          <div class="label">Presented By</div>
+          <div class="value">Your Name</div>
+        </div>
+        <div>
+          <div class="label">Guide</div>
+          <div class="value">Prof. Guide Name</div>
+        </div>
+        <div>
+          <div class="label">Department</div>
+          <div class="value">Computer Science</div>
+        </div>
+        <div>
+          <div class="label">Year</div>
+          <div class="value">2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 2 — INTRODUCTION
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">01 — Introduction</div>
+        <h2 class="slide-title">Why <span>LinguaCast</span>?</h2>
+      </div>
+
+      <div class="two-col">
+        <div class="col">
+          <h3>The Challenge</h3>
+          <ul>
+            <li>Communication across languages remains a barrier.</li>
+            <li>Existing tools are mostly <strong>text-based</strong> — slow and awkward.</li>
+            <li>Voice translation usually requires <strong>paid APIs</strong>.</li>
+            <li>Backend setups add complexity for simple projects.</li>
+            <li>Many solutions <strong>do not support Tamil</strong> or Indian languages.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Our Solution</h3>
+          <ul>
+            <li>100% <strong>browser-native</strong> — no server needed.</li>
+            <li>Uses the <strong>Web Speech API</strong> for both recognition and synthesis.</li>
+            <li>Free translation endpoint — <strong>zero cost</strong>.</li>
+            <li>Supports <strong>30 languages</strong> including Tamil, Hindi, Telugu.</li>
+            <li>Modern UI with dark/light themes and persistent history.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 3 — PROBLEM STATEMENT
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">02 — Problem Statement</div>
+        <h2 class="slide-title">Five Core <span>Problems</span></h2>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <span class="card-icon">⌨️</span>
+          <h3>Text-Only Input</h3>
+          <p>Users must type queries. Real conversations become slow and unnatural.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">🔇</span>
+          <h3>No Voice Output</h3>
+          <p>Most tools display text but never speak it, limiting accessibility and usability.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">💸</span>
+          <h3>Expensive APIs</h3>
+          <p>Google Cloud, DeepL, Azure all require paid accounts for production.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">⚙️</span>
+          <h3>Complex Setup</h3>
+          <p>Backend, API keys, and environment variables make simple projects hard.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">🌐</span>
+          <h3>Language Gaps</h3>
+          <p>Many tools lack reliable support for Indian regional languages like Tamil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 4 — OBJECTIVES
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">03 — Objectives</div>
+        <h2 class="slide-title">What We Set Out <span>To Build</span></h2>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th style="width:60px;">#</th><th>Objective</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Build a fully client-side voice translator with <strong>zero backend</strong>.</td></tr>
+          <tr><td>2</td><td>Support <strong>30+ languages</strong> including all major Indian languages.</td></tr>
+          <tr><td>3</td><td>Provide both <strong>text output</strong> and <strong>audio output</strong>.</td></tr>
+          <tr><td>4</td><td>Implement <strong>echo guard</strong> to prevent the mic from re-capturing TTS.</td></tr>
+          <tr><td>5</td><td>Persist <strong>translation history</strong> across sessions.</td></tr>
+          <tr><td>6</td><td>Deliver a modern, <strong>responsive, theme-able UI</strong>.</td></tr>
+          <tr><td>7</td><td>Guarantee <strong>zero cost</strong> — no API keys, no subscriptions.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 5 — LITERATURE SURVEY
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">04 — Literature Survey</div>
+        <h2 class="slide-title">Existing <span>Systems</span></h2>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>System</th>
+            <th>Approach</th>
+            <th>Limitations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google Translate</td>
+            <td>Text-based, typing required</td>
+            <td>No continuous voice mode</td>
+          </tr>
+          <tr>
+            <td>DeepL</td>
+            <td>Text + document translation</td>
+            <td>No Tamil support</td>
+          </tr>
+          <tr>
+            <td>Microsoft Translator</td>
+            <td>Voice + text, requires account</td>
+            <td>Needs Azure key for API use</td>
+          </tr>
+          <tr>
+            <td>iTranslate</td>
+            <td>Mobile app, subscription</td>
+            <td>Paid, not browser-based</td>
+          </tr>
+          <tr>
+            <td>Polyglot (open source)</td>
+            <td>Backend + paid APIs</td>
+            <td>Requires server, ~$0.82/hour</td>
+          </tr>
+          <tr style="background:rgba(6,182,212,0.08);">
+            <td><strong>LinguaCast</strong></td>
+            <td><strong>Browser-native, free endpoint</strong></td>
+            <td><strong>Runs entirely client-side, zero cost</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 6 — SYSTEM ARCHITECTURE
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">05 — Design</div>
+        <h2 class="slide-title">System <span>Architecture</span></h2>
+      </div>
+
+      <div class="arch-flow">
+        <div class="arch-row"><div class="arch-box">🎤 Microphone Input</div></div>
+        <div class="arch-row"><span class="arch-arrow">↓</span></div>
+        <div class="arch-row"><div class="arch-box">🗣️ Web Speech Recognition</div></div>
+        <div class="arch-row"><span class="arch-arrow">↓</span></div>
+        <div class="arch-row"><div class="arch-box">📝 Original Text</div></div>
+        <div class="arch-row"><span class="arch-arrow">↓</span></div>
+        <div class="arch-row"><div class="arch-box accent">🔄 Google Translate API (Free)</div></div>
+        <div class="arch-row"><span class="arch-arrow">↓</span></div>
+        <div class="arch-row"><div class="arch-box">🌐 Translated Text</div></div>
+        <div class="arch-row"><span class="arch-arrow">↓</span></div>
+        <div class="arch-row">
+          <div class="arch-box">🔊 Speech Synthesis</div>
+          <div class="arch-box">💾 localStorage</div>
+          <div class="arch-box">📊 Visualizer</div>
+        </div>
+        <div class="arch-row"><span class="arch-arrow">↓</span></div>
+        <div class="arch-row"><div class="arch-box accent">🎧 Speaker Output</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 7 — TECHNOLOGIES USED
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">06 — Technologies Used</div>
+        <h2 class="slide-title">Tech <span>Stack</span></h2>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card"><div class="icon">🌐</div><h4>HTML5</h4><p>Semantic structure</p></div>
+        <div class="tech-card"><div class="icon">🎨</div><h4>CSS3</h4><p>Glassmorphism & theming</p></div>
+        <div class="tech-card"><div class="icon">⚡</div><h4>JavaScript ES6+</h4><p>Async/await, DOM</p></div>
+        <div class="tech-card"><div class="icon">🎤</div><h4>SpeechRecognition</h4><p>Speech → text</p></div>
+        <div class="tech-card"><div class="icon">🔊</div><h4>SpeechSynthesis</h4><p>Text → speech</p></div>
+        <div class="tech-card"><div class="icon">📡</div><h4>Fetch API</h4><p>Translation calls</p></div>
+        <div class="tech-card"><div class="icon">💾</div><h4>localStorage</h4><p>History & theme</p></div>
+        <div class="tech-card"><div class="icon">📊</div><h4>Canvas + Web Audio</h4><p>Live visualizer</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 8 — MODULE DESCRIPTION
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">07 — Module Description</div>
+        <h2 class="slide-title">Ten Core <span>Modules</span></h2>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="emoji">1️⃣</span>
+          <div><h4>Theme Toggle</h4><p>Dark / light mode with persistence + OS detection.</p></div>
+        </div>
+        <div class="feature-item">
+          <span class="emoji">2️⃣</span>
+          <div><h4>Internet Status</h4><p>Live online/offline badge via navigator.onLine events.</p></div>
+        </div>
+        <div class="feature-item">
+          <span class="emoji">3️⃣</span>
+          <div><h4>Toast Notifications</h4><p>Auto-dismissing feedback messages.</p></div>
+        </div>
+        <div class="feature-item">
+          <span class="emoji">4️⃣</span>
+          <div><h4>Speech Recognition</h4><p>Continuous, interim results, debounced 600 ms.</p></div>
+        </div>
+        <div class="feature-item">
+          <span class="emoji">5️⃣</span>
+          <div><h4>Translation</h4><p>Fetch to Google endpoint, parse nested array.</p></div>
+        </div>
+        <div class="feature-item">
+          <span class="emoji">6️⃣</span>
+          <div><h4>Text-to-Speech</h4><p>Echo guard — stops mic + 1.4 s cooldown.</p></div>
+        </div>
+        <div class="feature-item">
+          <span class="emoji">7️⃣</span>
+          <div><h4>Audio Visualizer</h4><p>Canvas frequency bars via AnalyserNode.</p></div>
+        </div>
+        <div class="feature-item">
+          <span class="emoji">8️⃣</span>
+          <div><h4>History Management</h4><p>Last 100 entries, export JSON, clear all.</p></div>
+        </div>
+        <div class="feature-item">
+          <span class="emoji">9️⃣</span>
+          <div><h4>Event Listeners</h4><p>Keyboard shortcuts: Space = mic, T = theme.</p></div>
+        </div>
+        <div class="feature-item">
+          <span class="emoji">🔟</span>
+          <div><h4>Initialization</h4><p>Applies theme, badge, copyright year.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 9 — WORKING PRINCIPLE
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">08 — Working Principle</div>
+        <h2 class="slide-title">Step-by-Step <span>Flow</span></h2>
+      </div>
+
+      <div class="arch-flow">
+        <div class="arch-row">
+          <div class="arch-box">1️⃣ Tap Mic</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">2️⃣ Speak</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">3️⃣ Speech → Text</div>
+        </div>
+        <div class="arch-row"><span class="arch-arrow">↓</span></div>
+        <div class="arch-row">
+          <div class="arch-box">4️⃣ Debounce 600ms</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box accent">5️⃣ Translate</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">6️⃣ Display</div>
+        </div>
+        <div class="arch-row"><span class="arch-arrow">↓</span></div>
+        <div class="arch-row">
+          <div class="arch-box">7️⃣ Save History</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">8️⃣ Auto-Play TTS</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box accent">9️⃣ Echo Cooldown</div>
+        </div>
+      </div>
+
+      <p style="text-align:center;color:var(--text-2);font-size:0.85rem;margin-top:24px;">
+        Result: hands-free speech-to-speech translation in under 2 seconds.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 10 — ALGORITHM / PSEUDOCODE
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">09 — Algorithm</div>
+        <h2 class="slide-title">Core <span>Pseudocode</span></h2>
+      </div>
+
+      <div class="code-block"><span class="cmt">// Main translation flow</span>
+<span class="kw">FUNCTION</span> <span class="fn">onSpeechResult</span>(event):
+    <span class="kw">IF</span> echoGuard <span class="kw">AND</span> (agentSpeaking <span class="kw">OR</span> cooldownActive):
+        <span class="kw">RETURN</span>
+    <span class="kw">FOR</span> each result in event.results:
+        <span class="kw">IF</span> result.isFinal:
+            finalTranscript += result.transcript
+    <span class="kw">IF</span> finalTranscript has new content:
+        <span class="fn">DEBOUNCE</span> <span class="num">600</span>ms → <span class="fn">translateText</span>(finalTranscript)
+    <span class="fn">UPDATE</span> originalText panel
+
+<span class="kw">FUNCTION</span> <span class="fn">translateText</span>(text):
+    <span class="kw">IF</span> not online: <span class="kw">RETURN</span> error
+    from = sourceLang.code;  to = targetLang.code
+    <span class="kw">IF</span> from == to: <span class="kw">RETURN</span> text
+    url = <span class="str">"https://translate.googleapis.com/translate_a/single?..."</span>
+    response = <span class="fn">FETCH</span>(url)
+    translated = <span class="fn">parse</span>(response)
+    <span class="fn">UPDATE</span> translatedText panel
+    <span class="fn">SAVE</span> to history
+    <span class="kw">IF</span> autoPlay: <span class="fn">speakTranslation</span>()
+
+<span class="kw">FUNCTION</span> <span class="fn">speakTranslation</span>():
+    <span class="kw">IF</span> echoGuard: recognition.<span class="fn">stop</span>()
+    agentSpeaking = <span class="kw">TRUE</span>
+    utter = <span class="kw">new</span> <span class="fn">SpeechSynthesisUtterance</span>(translation)
+    utter.onend = () =&gt; {
+        agentSpeaking = <span class="kw">FALSE</span>
+        cooldownTimer = <span class="fn">setTimeout</span>(<span class="num">1400</span>ms)
+    }
+    speechSynthesis.<span class="fn">speak</span>(utter)</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 11 — DATA FLOW DIAGRAM
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">10 — Data Flow</div>
+        <h2 class="slide-title">Data Flow <span>Diagram</span></h2>
+      </div>
+
+      <div class="diagram">        ┌──────────┐
+        │   User   │
+        └────┬─────┘
+             │ speaks
+             ▼
+   ┌───────────────────┐
+   │ Speech Recognition│
+   └────────┬──────────┘
+            │ text
+            ▼
+   ┌───────────────────┐      ┌──────────────────┐
+   │ translateText()   │─────▶│ Google Translate │
+   └────────┬──────────┘      └──────────────────┘
+            │ translated                 │
+            ▼                            │
+   ┌───────────────────┐                 │
+   │    UI Panels      │◀────────────────┘
+   └────────┬──────────┘
+            │
+   ┌────────┴────────┐
+   ▼                 ▼
+┌────────────┐  ┌──────────────────┐
+│localStorage│  │ speechSynthesis  │
+│ (History)  │  │ (Audio Output)   │
+└────────────┘  └──────────────────┘</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 12 — USE CASE DIAGRAM
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">11 — Use Cases</div>
+        <h2 class="slide-title">Use Case <span>Diagram</span></h2>
+      </div>
+
+      <div class="diagram">              ┌──────────────────────────┐
+              │        LinguaCast        │
+              │                          │
+              │  ○ Start / Stop Mic      │
+              │  ○ Select Languages      │
+   ┌──────┐   │  ○ Swap Languages        │
+   │ User │──▶│  ○ View Translation      │
+   └──────┘   │  ○ Play Translation      │
+              │  ○ Copy Text             │
+              │  ○ View History          │
+              │  ○ Export / Clear History│
+              │  ○ Toggle Theme          │
+              │  ○ Adjust Speed          │
+              │  ○ Toggle Auto-play      │
+              │  ○ Toggle Echo Guard     │
+              └──────────────────────────┘
+
+              Actor: User (single actor)
+              No login, no admin, no database.</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 13 — DATABASE / STORAGE DESIGN
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">12 — Storage Design</div>
+        <h2 class="slide-title">localStorage <span>Schema</span></h2>
+      </div>
+
+      <p style="color:var(--text-2);font-size:0.88rem;margin-bottom:14px;">
+        No traditional database. Data is stored in the browser's <strong>localStorage</strong>.
+      </p>
+
+      <div class="code-block"><span class="cmt">// Key 1: linguacast_history  (max 100 entries, FIFO)</span>
+[
+  {
+    <span class="str">"id"</span>: <span class="num">1735689600000</span>,
+    <span class="str">"original"</span>: <span class="str">"Hello, how are you?"</span>,
+    <span class="str">"translated"</span>: <span class="str">"வணக்கம், எப்படி இருக்கிறீர்கள்?"</span>,
+    <span class="str">"from"</span>: <span class="str">"en-US"</span>,
+    <span class="str">"to"</span>: <span class="str">"ta-IN"</span>,
+    <span class="str">"time"</span>: <span class="str">"1/1/2026, 10:30:00 AM"</span>
+  }
+]
+
+<span class="cmt">// Key 2: linguacast_theme</span>
+<span class="str">"light"</span>  <span class="kw">OR</span>  <span class="str">"dark"</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 14 — FEATURES IMPLEMENTED
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">13 — Features</div>
+        <h2 class="slide-title">Implemented <span>Features</span></h2>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature-item"><span class="emoji">🎤</span><div><h4>Real-Time Speech Recognition</h4><p>Live transcription as you speak</p></div></div>
+        <div class="feature-item"><span class="emoji">🌍</span><div><h4>30 Languages</h4><p>Indian + global coverage</p></div></div>
+        <div class="feature-item"><span class="emoji">🔊</span><div><h4>Text-to-Speech</h4><p>Adjustable rate 0.5×–1.5×</p></div></div>
+        <div class="feature-item"><span class="emoji">🌗</span><div><h4>Dark / Light Theme</h4><p>Saved + OS detection</p></div></div>
+        <div class="feature-item"><span class="emoji">🔇</span><div><h4>Echo Guard</h4><p>Feedback prevention</p></div></div>
+        <div class="feature-item"><span class="emoji">📜</span><div><h4>Translation History</h4><p>100 entries + export JSON</p></div></div>
+        <div class="feature-item"><span class="emoji">📋</span><div><h4>Copy Text</h4><p>Original or translation</p></div></div>
+        <div class="feature-item"><span class="emoji">🔄</span><div><h4>Swap Languages</h4><p>One-click swap</p></div></div>
+        <div class="feature-item"><span class="emoji">📊</span><div><h4>Audio Visualizer</h4><p>Canvas frequency bars</p></div></div>
+        <div class="feature-item"><span class="emoji">⌨️</span><div><h4>Keyboard Shortcuts</h4><p>Space = mic, T = theme</p></div></div>
+        <div class="feature-item"><span class="emoji">🌐</span><div><h4>Internet Status</h4><p>Online / offline badge</p></div></div>
+        <div class="feature-item"><span class="emoji">🔔</span><div><h4>Toast Notifications</h4><p>Auto-dismiss feedback</p></div></div>
+        <div class="feature-item"><span class="emoji">📱</span><div><h4>Responsive Layout</h4><p>Desktop / tablet / mobile</p></div></div>
+        <div class="feature-item"><span class="emoji">©</span><div><h4>Copyright Footer</h4><p>Dynamic year</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 15 — SUPPORTED LANGUAGES
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">14 — Language Coverage</div>
+        <h2 class="slide-title">30 Supported <span>Languages</span></h2>
+      </div>
+
+      <div class="lang-section">
+        <h3>🇮🇳 Indian Languages (10)</h3>
+        <div class="lang-badges">
+          <span class="lang-badge">Tamil</span>
+          <span class="lang-badge">Hindi</span>
+          <span class="lang-badge">Telugu</span>
+          <span class="lang-badge">Bengali</span>
+          <span class="lang-badge">Malayalam</span>
+          <span class="lang-badge">Marathi</span>
+          <span class="lang-badge">Gujarati</span>
+          <span class="lang-badge">Kannada</span>
+          <span class="lang-badge">Punjabi</span>
+          <span class="lang-badge">Urdu</span>
+        </div>
+      </div>
+
+      <div class="lang-section">
+        <h3>🌍 European Languages (10)</h3>
+        <div class="lang-badges">
+          <span class="lang-badge">English</span>
+          <span class="lang-badge">Spanish</span>
+          <span class="lang-badge">French</span>
+          <span class="lang-badge">German</span>
+          <span class="lang-badge">Italian</span>
+          <span class="lang-badge">Portuguese</span>
+          <span class="lang-badge">Russian</span>
+          <span class="lang-badge">Dutch</span>
+          <span class="lang-badge">Polish</span>
+          <span class="lang-badge">Swedish</span>
+        </div>
+      </div>
+
+      <div class="lang-section">
+        <h3>🌏 Asian & Middle Eastern (10)</h3>
+        <div class="lang-badges">
+          <span class="lang-badge">Japanese</span>
+          <span class="lang-badge">Korean</span>
+          <span class="lang-badge">Chinese</span>
+          <span class="lang-badge">Thai</span>
+          <span class="lang-badge">Vietnamese</span>
+          <span class="lang-badge">Indonesian</span>
+          <span class="lang-badge">Arabic</span>
+          <span class="lang-badge">Hebrew</span>
+          <span class="lang-badge">Persian</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 16 — UI DESIGN
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">15 — User Interface</div>
+        <h2 class="slide-title">UI Design & <span>Color Palette</span></h2>
+      </div>
+
+      <div class="two-col">
+        <div class="col">
+          <h3>Layout Sections</h3>
+          <ul>
+            <li>Header — logo, theme toggle, connection badge</li>
+            <li>Language row — FROM | swap | TO</li>
+            <li>Mic button + visualizer</li>
+            <li>Options bar — toggles + speed slider</li>
+            <li>Two panels — Original | Translation</li>
+            <li>Action buttons — Play | History</li>
+            <li>Footer — copyright</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Design Language</h3>
+          <ul>
+            <li><strong>Glassmorphism</strong> — frosted glass with backdrop-filter</li>
+            <li><strong>Animated orbs</strong> — soft blurred background circles</li>
+            <li><strong>Grid overlay</strong> — subtle indigo grid</li>
+            <li><strong>Micro-interactions</strong> — hover, focus, listening pulse</li>
+            <li><strong>Smooth transitions</strong> — 0.3–0.45 s on state changes</li>
+            <li><strong>Typography</strong> — Inter, weights 300–900</li>
+            <li><strong>Accent colors</strong> — indigo #6366f1, violet #8b5cf6, cyan #06b6d4</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 17 — TESTING
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">16 — Testing</div>
+        <h2 class="slide-title">Test Cases & <span>Results</span></h2>
+      </div>
+
+      <div class="stats-row" style="margin-bottom:16px;">
+        <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">Test Cases</div></div>
+        <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">Passed</div></div>
+        <div class="stat-card"><div class="stat-number">100%</div><div class="stat-label">Pass Rate</div></div>
+        <div class="stat-card"><div class="stat-number">&lt;1s</div><div class="stat-label">Page Load</div></div>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Test Case</th><th>Input</th><th>Expected</th><th>Result</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Short English → Tamil</td><td>"Hello"</td><td>"வணக்கம்"</td><td class="status-pass">✓ Pass</td></tr>
+          <tr><td>Long English → Hindi</td><td>500+ chars</td><td>Full translation</td><td class="status-pass">✓ Pass</td></tr>
+          <tr><td>Tamil → English</td><td>"வணக்கம்"</td><td>"Hello"</td><td class="status-pass">✓ Pass</td></tr>
+          <tr><td>Same language</td><td>English → English</td><td>No API call</td><td class="status-pass">✓ Pass</td></tr>
+          <tr><td>Offline mode</td><td>Wi-Fi off</td><td>Offline badge</td><td class="status-pass">✓ Pass</td></tr>
+          <tr><td>Mic denied</td><td>Block permission</td><td>Error shown</td><td class="status-pass">✓ Pass</td></tr>
+          <tr><td>Echo guard</td><td>Play TTS</td><td>Mic stops + cooldown</td><td class="status-pass">✓ Pass</td></tr>
+          <tr><td>History save</td><td>3 translations</td><td>Badge = 3</td><td class="status-pass">✓ Pass</td></tr>
+          <tr><td>Export JSON</td><td>Click Export</td><td>File downloaded</td><td class="status-pass">✓ Pass</td></tr>
+          <tr><td>Theme toggle</td><td>Click 🌙</td><td>Light mode</td><td class="status-pass">✓ Pass</td></tr>
+          <tr><td>Theme persist</td><td>Reload page</td><td>Theme kept</td><td class="status-pass">✓ Pass</td></tr>
+          <tr><td>Clear history</td><td>Confirm dialog</td><td>Empty history</td><td class="status-pass">✓ Pass</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 18 — LIMITATIONS
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">17 — Limitations</div>
+        <h2 class="slide-title">Known <span>Limitations</span></h2>
+      </div>
+
+      <div class="card-grid">
+        <div class="card"><span class="card-icon">🌐</span><h3>Browser Support</h3><p>Best in Chrome & Edge. Firefox and Safari have limited Speech Recognition support.</p></div>
+        <div class="card"><span class="card-icon">📡</span><h3>Internet Required</h3><p>Translation uses a remote endpoint — no offline mode yet.</p></div>
+        <div class="card"><span class="card-icon">🎭</span><h3>No Voice Cloning</h3><p>Output uses a robotic browser voice, not the speaker's tone.</p></div>
+        <div class="card"><span class="card-icon">👥</span><h3>No Speaker Diarization</h3><p>Cannot distinguish between multiple speakers in a conversation.</p></div>
+        <div class="card"><span class="card-icon">⏱️</span><h3>~1.5s Latency</h3><p>Speech → text → API → translation → display takes a moment.</p></div>
+        <div class="card"><span class="card-icon">📝</span><h3>No Custom Glossary</h3><p>Users cannot override translations for specific terms.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 19 — FUTURE ENHANCEMENTS
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">18 — Future Scope</div>
+        <h2 class="slide-title">Future <span>Enhancements</span></h2>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th style="width:50px;">#</th><th>Enhancement</th><th>Approach</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Voice Cloning</td><td>Backend + ElevenLabs / Coqui TTS</td></tr>
+          <tr><td>2</td><td>Offline Translation</td><td>Bundle Argos Translate via WASM</td></tr>
+          <tr><td>3</td><td>Speaker Diarization</td><td>Backend + pyannote / Deepgram</td></tr>
+          <tr><td>4</td><td>Multi-turn Context</td><td>Keep recent utterances to improve translation</td></tr>
+          <tr><td>5</td><td>Custom Glossary</td><td>User-defined terms override translation</td></tr>
+          <tr><td>6</td><td>Meeting Integration</td><td>Chrome extension for Google Meet / Zoom</td></tr>
+          <tr><td>7</td><td>PWA Support</td><td>Service Worker + manifest for install-as-app</td></tr>
+          <tr><td>8</td><td>File Transcription</td><td>Upload audio/video for translated subtitles</td></tr>
+          <tr><td>9</td><td>Shareable History</td><td>Cloud sync via Firebase</td></tr>
+          <tr><td>10</td><td>Emotion Detection</td><td>Analyze tone from speech prosody</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 20 — CONCLUSION & REFERENCES
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="slide-kicker">19 — Conclusion</div>
+        <h2 class="slide-title">Conclusion & <span>References</span></h2>
+      </div>
+
+      <div class="two-col">
+        <div class="col">
+          <h3>Conclusion</h3>
+          <ul>
+            <li>Built a <strong>fully functional</strong> real-time voice translator.</li>
+            <li>Uses <strong>only browser-native technologies</strong> — no backend.</li>
+            <li><strong>Zero cost</strong> — no API keys, no subscriptions.</li>
+            <li>Supports <strong>30 languages</strong> including Tamil.</li>
+            <li>Excellent <strong>learning outcomes</strong> in Web APIs and UI design.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Key References</h3>
+          <ul style="font-size:0.78rem;">
+            <li>MDN — Web Speech API</li>
+            <li>MDN — SpeechSynthesisUtterance</li>
+            <li>MDN — Fetch API, Web Audio API</li>
+            <li>W3C — Speech API Spec</li>
+            <li>Google Cloud Translation Docs</li>
+            <li>Microsoft Azure Translator Docs</li>
+            <li>LibreTranslate (open source)</li>
+            <li>Argos Translate (open source)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 21 — THANK YOU
+       ============================================================ -->
+  <section class="slide">
+    <div class="slide-inner thanks-slide">
+      <div class="thanks-mark">🙏</div>
+      <h2 class="thanks-title">Thank You</h2>
+      <p class="thanks-sub">Questions & Feedback Welcome</p>
+
+      <div class="title-meta">
+        <div><div class="label">Project</div><div class="value">LinguaCast</div></div>
+        <div><div class="label">By</div><div class="value">Your Name</div></div>
+        <div><div class="label">Department</div><div class="value">Computer Science</div></div>
+        <div><div class="label">Year</div><div class="value">2026</div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="controls">
+  <button class="ctrl-btn" id="prevBtn" title="Previous (←)">←</button>
+  <div class="slide-counter" id="counter">1 / 21</div>
+  <button class="ctrl-btn" id="nextBtn" title="Next (→)">→</button>
+  <button class="ctrl-btn" id="fsBtn" title="Fullscreen (F)">⛶</button>
+  <button class="ctrl-btn print" id="printBtn" title="Print / Save as PDF (Ctrl+P)">🖨️ Print / PDF</button>
+</div>
+
+<script>
+const slides      = document.querySelectorAll('.slide');
+const prevBtn     = document.getElementById('prevBtn');
+const nextBtn     = document.getElementById('nextBtn');
+const fsBtn       = document.getElementById('fsBtn');
+const printBtn    = document.getElementById('printBtn');
+const counter     = document.getElementById('counter');
+const progressBar = document.getElementById('progressBar');
+
+let currentIndex  = 0;
+const totalSlides = slides.length;
+
+function showSlide(index) {
+  if (index < 0) index = 0;
+  if (index >= totalSlides) index = totalSlides - 1;
+  currentIndex = index;
+  slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
+  updateUI();
+}
+
+function updateUI() {
+  counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+  prevBtn.disabled = currentIndex === 0;
+  nextBtn.disabled = currentIndex === totalSlides - 1;
+  progressBar.style.width = ((currentIndex + 1) / totalSlides) * 100 + '%';
+}
+
+nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  switch (e.key) {
+    case 'ArrowRight': case 'ArrowDown': case ' ': case 'PageDown':
+      e.preventDefault(); showSlide(currentIndex + 1); break;
+    case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
+      e.preventDefault(); showSlide(currentIndex - 1); break;
+    case 'Home': e.preventDefault(); showSlide(0); break;
+    case 'End':  e.preventDefault(); showSlide(totalSlides - 1); break;
+    case 'f': case 'F': e.preventDefault(); toggleFullscreen(); break;
+  }
+});
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(console.warn);
+  } else {
+    document.exitFullscreen();
+  }
+}
+fsBtn.addEventListener('click', toggleFullscreen);
+printBtn.addEventListener('click', () => window.print());
+
+/* Touch support */
+let touchStartX = 0;
+document.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+  const diff = touchStartX - e.changedTouches[0].screenX;
+  if (Math.abs(diff) < 60) return;
+  showSlide(currentIndex + (diff > 0 ? 1 : -1));
+}, { passive: true });
+
+showSlide(0);
+</script>
+
+</body>
+</html>
